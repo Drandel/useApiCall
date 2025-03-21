@@ -92,16 +92,15 @@ Same as `useAPICall`, but allows you to provide **side-effect functions** for di
 ## 🧪 Example API Function
 
 ```js
-// api/questions.js
 export const fetchQuestions = async () => {
   const res = await fetch("http://localhost:8080/api/questions");
-
   if (!res.ok) {
     throw new Error("Failed to fetch questions");
   }
-
-  return res.json();
-};
+  
+  const data = await res.json();
+  return data.questions;
+}
 ```
 
 ---
